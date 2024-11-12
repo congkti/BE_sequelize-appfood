@@ -11,6 +11,7 @@
 
 - API người dùng:
 
+  - Tạo người dùng mới: ...
   - Lấy danh sách tất cả người dùng: [GET]: **/user/getAllUsers**
 
 - API xử lý Nhà hàng:
@@ -53,4 +54,4 @@
     }
     ```
 
-  - ...
+  - Lấy thông tin đơn hàng theo user...
