@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS rate_res (
 	res_id INT,
 	FOREIGN KEY (res_id) REFERENCES restaurant(res_id),
 	
-	rate_amount INT(5),
+	rate_amount INT CHECK (rate_amount BETWEEN 1 AND 5),
 	rate_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	
 	

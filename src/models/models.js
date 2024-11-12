@@ -3,38 +3,50 @@ import likeResModel from "./likeRes.model.js";
 import orderModel from "./order.model.js";
 import rateResModel from "./rateRes.model.js";
 import restaurantModel from "./restaurant.model.js";
-import usersModel from "./user.model.js";
+import userModel from "./user.model.js";
 
 // Set mối quan hệ model food_types và food (1-N)
 foodTypeModel.hasMany(foodModel, { foreignKey: "type_id" });
 foodModel.belongsTo(foodTypeModel, { foreignKey: "type_id" });
 
 // Set mối quan hệ model users và orders (1-N)
-usersModel.hasMany(orderModel, { foreignKey: "user_id" });
-orderModel.belongsTo(usersModel, { foreignKey: "user_id" });
+userModel.hasMany(orderModel, { foreignKey: "user_id" });
+orderModel.belongsTo(userModel, { foreignKey: "user_id" });
 
 // Set mối quan hệ model orders và food (1-N)
 foodModel.hasMany(orderModel, { foreignKey: "food_id" });
 orderModel.belongsTo(foodModel, { foreignKey: "food_id" });
 
 // Set mối quan hệ model users và rate_res (1-N)
-usersModel.hasMany(rateResModel, { foreignKey: "user_id" });
-rateResModel.belongsTo(usersModel, { foreignKey: "user_id" });
+userModel.hasMany(rateResModel, { foreignKey: "user_id", as: "userRated" });
+rateResModel.belongsTo(userModel, { foreignKey: "user_id", as: "userRated" });
 
 // Set mối quan hệ model restaurant và rate_res (1-N)
-restaurantModel.hasMany(rateResModel, { foreignKey: "res_id" });
-rateResModel.belongsTo(restaurantModel, { foreignKey: "res_id" });
+restaurantModel.hasMany(rateResModel, {
+  foreignKey: "res_id",
+  as: "rateRestaurant",
+});
+rateResModel.belongsTo(restaurantModel, {
+  foreignKey: "res_id",
+  as: "rateRestaurant",
+});
 
 // Set mối quan hệ model users và like_res (1-N)
-usersModel.hasMany(likeResModel, { foreignKey: "user_id" });
-likeResModel.belongsTo(usersModel, { foreignKey: "user_id" });
+userModel.hasMany(likeResModel, { foreignKey: "user_id", as: "userLiked" });
+likeResModel.belongsTo(userModel, { foreignKey: "user_id", as: "userLiked" });
 
 // Set mối quan hệ model restaurant và like_res (1-N)
-restaurantModel.hasMany(likeResModel, { foreignKey: "res_id" });
-likeResModel.belongsTo(restaurantModel, { foreignKey: "res_id" });
+restaurantModel.hasMany(likeResModel, {
+  foreignKey: "res_id",
+  as: "restaurant",
+});
+likeResModel.belongsTo(restaurantModel, {
+  foreignKey: "res_id",
+  as: "restaurant",
+});
 
 export {
-  usersModel,
+  userModel,
   foodTypeModel,
   foodModel,
   orderModel,
