@@ -23,18 +23,27 @@
 - API đánh giá Nhà hàng:
 
   - Thêm đánh giá mới: [POST]: **restaurant/rateRes**
+
     => truyền Body:
+
+    ```
     {
     "userId":#,
     "resId":#,
     "rateAmount": #
     }
+    ```
+
   - Lấy danh sách đánh giá theo nhà hàng: [GET]: **/restaurant/getRateByResId/:resId**
   - Lấy danh sách đánh giá theo user: [GET]: **/restaurant/getRateByUserId/:userId**
 
 - API Đơn hàng:
+
   - Tạo mới đơn hàng đặt món: [POST]: **/order//newOrder**
+
     => truyền Body:
+
+    ```
     {
     "userId": #,
     "foodId": #,
@@ -42,4 +51,6 @@
     "promoCode": "DISCOUT01",
     "arrSubId": null
     }
+    ```
+
   - ...
